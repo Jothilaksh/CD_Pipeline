@@ -1,0 +1,24 @@
+# CD_Pipeline
+pipeline {
+    agent none
+    stages {
+        stage('Packaging') {
+            agent { node {  label 'POC_VM_StarrKB_Beta'    } }
+            steps {
+                echo 'Packaging Stage..'
+                sh '/opt/test.sh'
+            }
+        }
+        stage('Alpha') {
+            steps {
+                echo 'Execution Stage..'
+                echo 'Deployment Stage..'
+            }
+        }
+        stage('Beta') {
+            steps {
+                echo 'Execution Stage..'
+            }
+        }
+    }
+}
